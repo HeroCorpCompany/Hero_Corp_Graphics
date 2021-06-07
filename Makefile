@@ -1,7 +1,7 @@
 CC = g++
 EXEC = HeroCorp
 FLAGS = -Wall -Werror -pedantic
-LIBS = -lsfml-graphics -lsfml-window -lsfml-system
+LIBS = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-network
 STD = -std=c++17
 S = src
 O = obj
