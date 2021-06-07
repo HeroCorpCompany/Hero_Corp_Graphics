@@ -1,0 +1,1 @@
+# Hero_Corp_Graphics
