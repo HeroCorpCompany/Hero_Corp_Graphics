@@ -13,8 +13,12 @@ all: $(O) $(B) $(O)/Main.o
 $(O)/Main.o: $(O)/Engine.o
 	$(CC) $(S)/Main.cpp -c -o $(O)/Main.o $(STD) $(FLAGS)
 
-$(O)/Engine.o:
+$(O)/Engine.o: $(O)/World.o
 	$(CC) $(S)/engine/Engine.cpp -c -o $(O)/Engine.o $(STD) $(FLAGS)
+
+$(O)/World.o:
+	$(CC) $(S)/business/World.cpp -c -o $(O)/World.o $(STD) $(FLAGS)
+
 
 clean: $(O) $(B)
 	rm -r $(O)

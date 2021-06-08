@@ -4,6 +4,8 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+#include "../business/World.h"
+
 class Engine
 {
 public :
@@ -20,6 +22,8 @@ private :
 private :
 	sf::RenderWindow m_window;
 	static const sf::Time m_timePerFrame;
+
+	World m_world;
 };
 
 #endif //ENGINE_H

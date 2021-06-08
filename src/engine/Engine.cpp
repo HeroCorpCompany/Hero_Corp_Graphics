@@ -1,6 +1,6 @@
 #include "Engine.h"
 
-const sf::Time Engine::m_timePerFrame = sf::seconds(0.00001);
+const sf::Time Engine::m_timePerFrame = sf::seconds(1.f/60.f);
 
 Engine::Engine()
 : m_window(sf::VideoMode(650, 650), "Hero Corp", sf::Style::Fullscreen)
@@ -45,6 +45,6 @@ void Engine::update()
 void Engine::render()
 {
 	m_window.clear();
-	// What you want to display
+	m_window.draw(m_world);
 	m_window.display();
 }
