@@ -3,7 +3,7 @@
 const sf::Time Engine::m_timePerFrame = sf::seconds(0.00001);
 
 Engine::Engine()
-: m_window(sf::VideoMode(650, 650), "Random Noise")
+: m_window(sf::VideoMode(650, 650), "Hero Corp", sf::Style::Fullscreen)
 {
 }
 
@@ -32,7 +32,7 @@ void Engine::processEvents()
 	sf::Event event;
 	while (m_window.pollEvent(event))
 	{
-		if (event.type == sf::Event::Closed)
+		if (event.type == sf::Event::Closed || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape))
 			m_window.close();
 	}
 }
