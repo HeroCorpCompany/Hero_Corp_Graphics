@@ -13,6 +13,7 @@ public :
     AbstractLocation(std::size_t x, std::size_t y);
 
     void setBodyColor(sf::Color);
+    void setText(sf::String);
 
     void update(sf::Vector2i mousePosition);
 
@@ -23,6 +24,9 @@ protected :
     std::size_t x;
     std::size_t y;
     bool m_isSelected;
+
+    sf::Font m_font;
+    sf::Text m_text;
 
     sf::RectangleShape m_body;
     sf::RectangleShape m_bodySelected;
