@@ -22,7 +22,7 @@ class World : public sf::Drawable
 {
 public :
     World();
-    void update();
+    void update(sf::Vector2i mousePosition);
 
 private :
     virtual void draw(sf::RenderTarget&, sf::RenderStates) const;

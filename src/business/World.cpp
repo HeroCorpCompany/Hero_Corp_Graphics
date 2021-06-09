@@ -14,6 +14,14 @@ World::World()
     m_locations.push_back(new class Dungeon(7, 17));
 }
 
+void World::update(sf::Vector2i mousePosition)
+{
+    for (std::size_t i = 0; i < m_locations.size(); ++i)
+    {
+        m_locations[i]->update(mousePosition);
+    }
+}
+
 void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     target.clear(sf::Color(30, 140, 30));

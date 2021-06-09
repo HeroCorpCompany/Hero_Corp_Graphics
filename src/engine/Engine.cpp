@@ -39,7 +39,7 @@ void Engine::processEvents()
 
 void Engine::update()
 {
-    // What you want to update
+    m_world.update(sf::Mouse::getPosition(m_window));
 }
 
 void Engine::render()
