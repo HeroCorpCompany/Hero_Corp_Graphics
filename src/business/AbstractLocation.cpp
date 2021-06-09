@@ -1,7 +1,8 @@
 #include "AbstractLocation.h"
 
-AbstractLocation::AbstractLocation(std::size_t x, std::size_t y)
-: x(x)
+AbstractLocation::AbstractLocation(int id, std::size_t x, std::size_t y)
+: id(id)
+, x(x)
 , y(y)
 {
     m_body.setSize({float(SIZE_SCREEN_X - SIZE_MENU)/SIZE_TABLE_X, float(SIZE_SCREEN_Y)/SIZE_TABLE_Y});

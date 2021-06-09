@@ -9,10 +9,12 @@ using json = nlohmann::json;
 class Dungeon : public AbstractLocation
 {
 public :
-    Dungeon(std::size_t x, std::size_t y);
+    Dungeon(int id, std::size_t x, std::size_t y);
 
 private :
     json m_monsters;
+    json m_hunters;
+    int pop;
 };
 
 #endif //DUNGEON_H

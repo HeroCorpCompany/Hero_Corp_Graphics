@@ -9,10 +9,11 @@ using json = nlohmann::json;
 class Forum : public AbstractLocation
 {
 public :
-    Forum(std::size_t x, std::size_t y);
+    Forum(int id, std::size_t x, std::size_t y);
 
 private :
     json m_chasseurs;
+    int pop;
 };
 
 #endif //FORUM_H

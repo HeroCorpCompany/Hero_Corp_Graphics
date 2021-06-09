@@ -9,10 +9,12 @@ using json = nlohmann::json;
 class Guild : public AbstractLocation
 {
 public :
-    Guild(std::size_t x, std::size_t y);
+    Guild(int id, std::size_t x, std::size_t y);
 
 private :
-    json m_chasseurs;
+    json m_hunters;
+    int golds;
+    int pop;
 };
 
 #endif //GUILD_H

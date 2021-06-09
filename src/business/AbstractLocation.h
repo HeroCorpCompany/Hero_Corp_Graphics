@@ -10,7 +10,7 @@ class AbstractLocation : public sf::Drawable
 {
 public :
     AbstractLocation();
-    AbstractLocation(std::size_t x, std::size_t y);
+    AbstractLocation(int id, std::size_t x, std::size_t y);
 
     void setBodyColor(sf::Color);
     void setText(sf::String);
@@ -21,6 +21,7 @@ private :
     virtual void draw(sf::RenderTarget&, sf::RenderStates) const;
 
 protected :
+    int id;
     std::size_t x;
     std::size_t y;
     bool m_isSelected;
