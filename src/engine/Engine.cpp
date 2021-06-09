@@ -1,9 +1,9 @@
 #include "Engine.h"
 
-const sf::Time Engine::m_timePerFrame = sf::seconds(1.f/60.f);
+const sf::Time Engine::m_timePerFrame = sf::seconds(1.f/FPS);
 
 Engine::Engine()
-: m_window(sf::VideoMode(650, 650), "Hero Corp", sf::Style::Fullscreen)
+: m_window(sf::VideoMode(SIZE_SCREEN_X, SIZE_SCREEN_Y), "Hero Corp")
 {
 }
 

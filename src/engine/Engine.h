@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+#include "CONSTANTS.hpp"
 #include "../business/World.h"
 
 class Engine

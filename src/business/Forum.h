@@ -1,21 +1,17 @@
 #ifndef FORUM_H
 #define FORUM_H
 
-#include <SFML/Graphics.hpp>
-
+#include "AbstractLocation.h"
 #include "../tools/json.hpp"
 
 using json = nlohmann::json;
 
-class Forum
+class Forum : public AbstractLocation
 {
 public :
-    Forum();
+    Forum(std::size_t x, std::size_t y);
 
 private :
-    sf::CircleShape m_cercle;
-    int x;
-    int y;
     json m_chasseurs;
 };
 

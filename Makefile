@@ -16,8 +16,20 @@ $(O)/Main.o: $(O)/Engine.o
 $(O)/Engine.o: $(O)/World.o
 	$(CC) $(S)/engine/Engine.cpp -c -o $(O)/Engine.o $(STD) $(FLAGS)
 
-$(O)/World.o:
+$(O)/World.o: $(O)/Forum.o $(O)/Dungeon.o $(O)/Guild.o
 	$(CC) $(S)/business/World.cpp -c -o $(O)/World.o $(STD) $(FLAGS)
+
+$(O)/Forum.o: $(O)/AbstractLocation.o
+	$(CC) $(S)/business/Forum.cpp -c -o $(O)/Forum.o $(STD) $(FLAGS)
+
+$(O)/Dungeon.o: $(O)/AbstractLocation.o
+	$(CC) $(S)/business/Dungeon.cpp -c -o $(O)/Dungeon.o $(STD) $(FLAGS)
+
+$(O)/Guild.o: $(O)/AbstractLocation.o
+	$(CC) $(S)/business/Guild.cpp -c -o $(O)/Guild.o $(STD) $(FLAGS)
+
+$(O)/AbstractLocation.o:
+	$(CC) $(S)/business/AbstractLocation.cpp -c -o $(O)/AbstractLocation.o $(STD) $(FLAGS)
 
 
 clean: $(O) $(B)
