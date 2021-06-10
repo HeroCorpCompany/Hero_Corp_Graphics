@@ -10,14 +10,17 @@ B = bin
 all: $(O) $(B) $(O)/Main.o
 	$(CC) $(O)/*.o -o $(B)/$(EXEC) $(LIBS)
 
-$(O)/Main.o: $(O)/Engine.o
+$(O)/Main.o: $(O)/Engine.o $(O)/ApiManager.o
 	$(CC) $(S)/Main.cpp -c -o $(O)/Main.o $(STD) $(FLAGS)
 
 $(O)/Engine.o: $(O)/World.o
 	$(CC) $(S)/engine/Engine.cpp -c -o $(O)/Engine.o $(STD) $(FLAGS)
 
-$(O)/World.o: $(O)/Forum.o $(O)/Dungeon.o $(O)/Guild.o
+$(O)/World.o: $(O)/ApiManager.o
 	$(CC) $(S)/business/World.cpp -c -o $(O)/World.o $(STD) $(FLAGS)
+
+$(O)/ApiManager.o: $(O)/Forum.o $(O)/Guild.o $(O)/Dungeon.o
+	$(CC) $(S)/api/ApiManager.cpp -c -o $(O)/ApiManager.o $(STD) $(FLAGS)
 
 $(O)/Forum.o: $(O)/AbstractLocation.o
 	$(CC) $(S)/business/Forum.cpp -c -o $(O)/Forum.o $(STD) $(FLAGS)

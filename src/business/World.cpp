@@ -4,14 +4,9 @@ World::World()
 : m_sizex(SIZE_TABLE_X)
 , m_sizey(SIZE_TABLE_Y)
 , m_table(m_sizex, std::vector<Type>(m_sizey, Type::None))
+, m_updateTime(3.f)
+, m_timeSinceLastUpdate(m_updateTime)
 {
-    m_locations.push_back(new class Forum(20, 13));
-    m_locations.push_back(new class Guild(14, 20));
-    m_locations.push_back(new class Guild(31, 6));
-    m_locations.push_back(new class Guild(12, 12));
-    m_locations.push_back(new class Dungeon(12, 15));
-    m_locations.push_back(new class Dungeon(26, 9));
-    m_locations.push_back(new class Dungeon(7, 17));
 }
 
 void World::update(sf::Vector2i mousePosition)
@@ -20,6 +15,15 @@ void World::update(sf::Vector2i mousePosition)
     {
         m_locations[i]->update(mousePosition);
     }
+
+    if (m_timeSinceLastUpdate >= m_updateTime)
+    {
+        ApiManager api;
+        m_locations = api.getLocations();
+        m_timeSinceLastUpdate = 0.f;
+    }
+
+    m_timeSinceLastUpdate += 1/FPS;
 }
 
 void World::draw(sf::RenderTarget& target, sf::RenderStates states) const

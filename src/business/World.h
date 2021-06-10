@@ -4,9 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
-#include "Forum.h"
-#include "Dungeon.h"
-#include "Guild.h"
+#include "../api/ApiManager.h"
 
 enum Type 
 {
@@ -32,6 +30,9 @@ private :
     std::size_t m_sizex;
     std::size_t m_sizey;
     table m_table;
+
+    float m_updateTime;
+    float m_timeSinceLastUpdate;
 };
 
 #endif //WORLD_H
