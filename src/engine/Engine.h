@@ -19,6 +19,9 @@ private :
 	void processEvents();
 	void update();
 	void render();
+
+	void handleMouseInput(sf::Mouse::Button);
+	int deduceLocationIDFromMousePosition() const;
 	
 private :
 	sf::RenderWindow m_window;

@@ -5,7 +5,7 @@ World::World()
 , m_sizex(SIZE_TABLE_X)
 , m_sizey(SIZE_TABLE_Y)
 , m_table(m_sizex, std::vector<Type>(m_sizey, Type::None))
-, m_updateTime(10.f)
+, m_updateTime(3.f)
 , m_timeSinceLastUpdate(m_updateTime)
 {
 }
@@ -26,6 +26,11 @@ void World::update(sf::Vector2i mousePosition)
     }
 
     m_timeSinceLastUpdate += 1/FPS;
+}
+
+void World::setIdSelected(int id)
+{
+    m_idOfSelectedLocation = id;
 }
 
 void World::setLocations(std::vector<AbstractLocation*>& locations)
@@ -49,6 +54,11 @@ void World::setStatistics(int time, int nbHunt, int nbDonj, int nbGui)
     m_nbHunters = nbHunt;
     m_nbDungeons = nbDonj;
     m_nbGuilds = nbGui;
+}
+
+std::vector<AbstractLocation*> World::getLocations() const
+{
+    return m_locations;
 }
 
 void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -78,5 +88,9 @@ void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
         {
             target.draw(*m_locations[i]);
         }
+    }
+
+    if (m_idOfSelectedLocation)
+    {
     }
 }

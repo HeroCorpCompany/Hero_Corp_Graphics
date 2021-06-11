@@ -54,6 +54,11 @@ int AbstractLocation::getGolds() const
     return m_golds;
 }
 
+sf::Vector2i AbstractLocation::getPosition() const
+{
+    return sf::Vector2i(x, y);
+}
+
 bool AbstractLocation::isSelected() const
 {
     return m_isSelected;

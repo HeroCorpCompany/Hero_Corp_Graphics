@@ -16,6 +16,7 @@ public :
 
     int getID() const;
     int getGolds() const;
+    sf::Vector2i getPosition() const;
     bool isSelected() const;
 
     void setBodyColor(sf::Color);

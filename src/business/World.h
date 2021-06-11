@@ -21,10 +21,13 @@ public :
     World();
     void update(sf::Vector2i mousePosition);
 
+    void setIdSelected(int);
     void setLocations(std::vector<AbstractLocation*>&);
     void setHunters(std::vector<Hunter*>&);
     void setMonsters(std::vector<Monster*>&);
     void setStatistics(int time, int nbHunt, int nbDonj, int nbGui);
+
+    std::vector<AbstractLocation*> getLocations() const;
 
 private :
     virtual void draw(sf::RenderTarget&, sf::RenderStates) const;
