@@ -4,6 +4,8 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 
+#include "Hunter.h"
+#include "Monster.h"
 #include "../engine/CONSTANTS.hpp"
 
 class AbstractLocation : public sf::Drawable
@@ -11,6 +13,15 @@ class AbstractLocation : public sf::Drawable
 public :
     AbstractLocation();
     AbstractLocation(int id, std::size_t x, std::size_t y);
+
+    int getID() const;
+    bool isSelected() const;
+
+    virtual std::vector<Hunter*> getHunters() const = 0;
+    virtual std::vector<Monster*> getMonsters() const = 0;
+    virtual void setHunters(std::vector<Hunter*>) = 0;
+    virtual void setMonsters(std::vector<Monster*>) = 0;
+    virtual void setGolds(int) = 0;
 
     void setBodyColor(sf::Color);
     void setText(sf::String);

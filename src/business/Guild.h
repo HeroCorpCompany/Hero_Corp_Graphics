@@ -2,19 +2,22 @@
 #define GUILD_H
 
 #include "AbstractLocation.h"
-#include "../tools/json.hpp"
-
-using json = nlohmann::json;
 
 class Guild : public AbstractLocation
 {
 public :
     Guild(int id, std::size_t x, std::size_t y);
 
+    virtual std::vector<Hunter*> getHunters() const;
+    virtual std::vector<Monster*> getMonsters() const;
+    virtual void setHunters(std::vector<Hunter*>);
+    virtual void setMonsters(std::vector<Monster*>);
+    virtual void setGolds(int);
+
 private :
-    json m_hunters;
-    int golds;
-    int pop;
+    std::vector<Hunter*> m_hunters;
+    int m_golds;
+    std::size_t m_pop;
 };
 
 #endif //GUILD_H

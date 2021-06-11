@@ -7,6 +7,8 @@ AbstractLocation::AbstractLocation(int id, std::size_t x, std::size_t y)
 {
     m_body.setSize({float(SIZE_SCREEN_X - SIZE_MENU)/SIZE_TABLE_X, float(SIZE_SCREEN_Y)/SIZE_TABLE_Y});
     m_body.setPosition(x*float(SIZE_SCREEN_X - SIZE_MENU)/SIZE_TABLE_X, y*float(SIZE_SCREEN_Y)/SIZE_TABLE_Y);
+    m_body.setOutlineThickness(1.f);
+    m_body.setOutlineColor(sf::Color::Black);
 
     m_bodySelected = m_body;
     sf::FloatRect rect = m_bodySelected.getLocalBounds();
@@ -39,6 +41,16 @@ void AbstractLocation::draw(sf::RenderTarget& target, sf::RenderStates states) c
     {
         target.draw(m_body);
     }
+}
+
+int AbstractLocation::getID() const
+{
+    return id;
+}
+
+bool AbstractLocation::isSelected() const
+{
+    return m_isSelected;
 }
 
 void AbstractLocation::setBodyColor(sf::Color color)

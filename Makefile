@@ -28,11 +28,20 @@ $(O)/Forum.o: $(O)/AbstractLocation.o
 $(O)/Dungeon.o: $(O)/AbstractLocation.o
 	$(CC) $(S)/business/Dungeon.cpp -c -o $(O)/Dungeon.o $(STD) $(FLAGS)
 
-$(O)/Guild.o: $(O)/AbstractLocation.o
+$(O)/Guild.o: $(O)/AbstractLocation.o 
 	$(CC) $(S)/business/Guild.cpp -c -o $(O)/Guild.o $(STD) $(FLAGS)
 
-$(O)/AbstractLocation.o:
+$(O)/AbstractLocation.o: $(O)/Hunter.o $(O)/Monster.o
 	$(CC) $(S)/business/AbstractLocation.cpp -c -o $(O)/AbstractLocation.o $(STD) $(FLAGS)
+
+$(O)/Hunter.o: $(O)/AbstractPerso.o
+	$(CC) $(S)/business/Hunter.cpp -c -o $(O)/Hunter.o $(STD) $(FLAGS)
+
+$(O)/Monster.o: $(O)/AbstractPerso.o
+	$(CC) $(S)/business/Monster.cpp -c -o $(O)/Monster.o $(STD) $(FLAGS)
+
+$(O)/AbstractPerso.o:
+	$(CC) $(S)/business/AbstractPerso.cpp -c -o $(O)/AbstractPerso.o $(STD) $(FLAGS)
 
 
 clean: $(O) $(B)

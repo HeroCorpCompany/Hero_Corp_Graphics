@@ -3,11 +3,12 @@
 
 #include <SFML/Network.hpp>
 #include <vector>
+#include <iostream>
 
-#include "../business/AbstractLocation.h"
 #include "../business/Forum.h"
 #include "../business/Dungeon.h"
 #include "../business/Guild.h"
+#include "../business/Monster.h"
 #include "../tools/json.hpp"
 
 using json = nlohmann::json;
@@ -17,6 +18,9 @@ public :
     ApiManager();
 
     std::vector<AbstractLocation*> getLocations();
+    std::vector<Hunter*> getHuntersInLocation(int idLocation);
+    std::vector<Monster*> getMonstersInLocation(int idLocation);
+    int getGuildGolds(int idLocation);
 
 private :
     sf::Http m_http;

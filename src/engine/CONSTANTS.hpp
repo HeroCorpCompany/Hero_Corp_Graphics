@@ -4,8 +4,8 @@
 #define SIZE_SCREEN_X 1440
 #define SIZE_SCREEN_Y 980
 
-#define SIZE_TABLE_X 40
-#define SIZE_TABLE_Y 26
+#define SIZE_TABLE_X 28
+#define SIZE_TABLE_Y 24
 #define SIZE_MENU 300
 
 #define FPS 30.f

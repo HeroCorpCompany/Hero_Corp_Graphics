@@ -4,7 +4,7 @@ World::World()
 : m_sizex(SIZE_TABLE_X)
 , m_sizey(SIZE_TABLE_Y)
 , m_table(m_sizex, std::vector<Type>(m_sizey, Type::None))
-, m_updateTime(3.f)
+, m_updateTime(10.f)
 , m_timeSinceLastUpdate(m_updateTime)
 {
 }
@@ -18,9 +18,15 @@ void World::update(sf::Vector2i mousePosition)
 
     if (m_timeSinceLastUpdate >= m_updateTime)
     {
+        m_timeSinceLastUpdate = 0.f;
         ApiManager api;
         m_locations = api.getLocations();
-        m_timeSinceLastUpdate = 0.f;
+        for (std::size_t i = 0; i < m_locations.size(); ++i)
+        { 
+            m_locations[i]->setHunters(api.getHuntersInLocation(m_locations[i]->getID()));
+            m_locations[i]->setMonsters(api.getMonstersInLocation(m_locations[i]->getID()));
+            //m_locations[i]->setGolds(api.getGuildGolds(m_locations[i]->getID()));
+        }
     }
 
     m_timeSinceLastUpdate += 1/FPS;
@@ -42,6 +48,16 @@ void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
     
     for (std::size_t i = 0; i < m_locations.size(); ++i)
     {
-        target.draw(*m_locations[i]);
+        if (!m_locations[i]->isSelected())
+        {
+            target.draw(*m_locations[i]);
+        }
+    }
+    for (std::size_t i = 0; i < m_locations.size(); ++i)
+    {
+        if (m_locations[i]->isSelected())
+        {
+            target.draw(*m_locations[i]);
+        }
     }
 }
