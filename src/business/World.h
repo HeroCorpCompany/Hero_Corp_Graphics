@@ -50,6 +50,8 @@ private :
     float m_updateTime;
     float m_timeSinceLastUpdate;
     ApiManager m_api;
+
+    sf::Font m_font;
 };
 
 #endif //WORLD_H

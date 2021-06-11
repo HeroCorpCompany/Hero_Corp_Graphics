@@ -10,8 +10,12 @@ void ApiManager::updateWorld(World* world)
 {
     sf::Http::Request request;
     request.setMethod(sf::Http::Request::Get);
+
     request.setUri("/all");
+    sf::Clock clock;
     sf::Http::Response response = m_http.sendRequest(request);
+    sf::Time time = clock.restart();
+    std::cout << "Time : "<< time.asSeconds() << std::endl;
 
     if (response.getStatus() == sf::Http::Response::Ok)
     {

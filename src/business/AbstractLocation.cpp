@@ -19,7 +19,7 @@ AbstractLocation::AbstractLocation(int id, std::size_t x, std::size_t y, int gol
 
     if (!m_font.loadFromFile("assets/fonts/arial.ttf"))
     {
-        throw std::runtime_error ("Textbox::build() - Failed to load 'assets/fonts/arial.ttf'");
+        throw std::runtime_error ("Failed to load 'assets/fonts/arial.ttf'");
     }
     m_text.setPosition((x+1)*float(SIZE_SCREEN_X - SIZE_MENU)/SIZE_TABLE_X + 10, y*float(SIZE_SCREEN_Y)/SIZE_TABLE_Y);
     m_text.setFont(m_font);
