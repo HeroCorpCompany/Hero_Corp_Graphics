@@ -12,16 +12,11 @@ class AbstractLocation : public sf::Drawable
 {
 public :
     AbstractLocation();
-    AbstractLocation(int id, std::size_t x, std::size_t y);
+    AbstractLocation(int id, std::size_t x, std::size_t y, int golds);
 
     int getID() const;
+    int getGolds() const;
     bool isSelected() const;
-
-    virtual std::vector<Hunter*> getHunters() const = 0;
-    virtual std::vector<Monster*> getMonsters() const = 0;
-    virtual void setHunters(std::vector<Hunter*>) = 0;
-    virtual void setMonsters(std::vector<Monster*>) = 0;
-    virtual void setGolds(int) = 0;
 
     void setBodyColor(sf::Color);
     void setText(sf::String);
@@ -35,6 +30,7 @@ protected :
     int id;
     std::size_t x;
     std::size_t y;
+    int m_golds;
     bool m_isSelected;
 
     sf::Font m_font;

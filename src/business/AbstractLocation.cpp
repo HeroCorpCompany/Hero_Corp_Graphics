@@ -1,9 +1,10 @@
 #include "AbstractLocation.h"
 
-AbstractLocation::AbstractLocation(int id, std::size_t x, std::size_t y)
+AbstractLocation::AbstractLocation(int id, std::size_t x, std::size_t y, int golds)
 : id(id)
 , x(x)
 , y(y)
+, m_golds(golds)
 {
     m_body.setSize({float(SIZE_SCREEN_X - SIZE_MENU)/SIZE_TABLE_X, float(SIZE_SCREEN_Y)/SIZE_TABLE_Y});
     m_body.setPosition(x*float(SIZE_SCREEN_X - SIZE_MENU)/SIZE_TABLE_X, y*float(SIZE_SCREEN_Y)/SIZE_TABLE_Y);
@@ -46,6 +47,11 @@ void AbstractLocation::draw(sf::RenderTarget& target, sf::RenderStates states) c
 int AbstractLocation::getID() const
 {
     return id;
+}
+
+int AbstractLocation::getGolds() const
+{
+    return m_golds;
 }
 
 bool AbstractLocation::isSelected() const

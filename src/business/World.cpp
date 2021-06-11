@@ -1,7 +1,8 @@
 #include "World.h"
 
 World::World()
-: m_sizex(SIZE_TABLE_X)
+: m_idOfSelectedLocation(0)
+, m_sizex(SIZE_TABLE_X)
 , m_sizey(SIZE_TABLE_Y)
 , m_table(m_sizex, std::vector<Type>(m_sizey, Type::None))
 , m_updateTime(10.f)
@@ -19,17 +20,35 @@ void World::update(sf::Vector2i mousePosition)
     if (m_timeSinceLastUpdate >= m_updateTime)
     {
         m_timeSinceLastUpdate = 0.f;
-        ApiManager api;
-        m_locations = api.getLocations();
-        for (std::size_t i = 0; i < m_locations.size(); ++i)
-        { 
-            m_locations[i]->setHunters(api.getHuntersInLocation(m_locations[i]->getID()));
-            m_locations[i]->setMonsters(api.getMonstersInLocation(m_locations[i]->getID()));
-            //m_locations[i]->setGolds(api.getGuildGolds(m_locations[i]->getID()));
-        }
+        m_api.updateWorld(this);
+        //m_locations = m_api.getLocations();
+        //m_hunters = m_api.getHunters();
     }
 
     m_timeSinceLastUpdate += 1/FPS;
+}
+
+void World::setLocations(std::vector<AbstractLocation*>& locations)
+{
+    m_locations = locations;
+}
+
+void World::setHunters(std::vector<Hunter*>& hunters)
+{
+    m_hunters = hunters;
+}
+
+void World::setMonsters(std::vector<Monster*>& monsters)
+{
+    m_monsters = monsters;
+}
+
+void World::setStatistics(int time, int nbHunt, int nbDonj, int nbGui)
+{
+    m_timeIteration = time;
+    m_nbHunters = nbHunt;
+    m_nbDungeons = nbDonj;
+    m_nbGuilds = nbGui;
 }
 
 void World::draw(sf::RenderTarget& target, sf::RenderStates states) const

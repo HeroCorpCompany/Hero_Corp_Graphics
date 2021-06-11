@@ -13,14 +13,13 @@
 
 using json = nlohmann::json;
 
+class World;
+
 class ApiManager {
 public :
     ApiManager();
 
-    std::vector<AbstractLocation*> getLocations();
-    std::vector<Hunter*> getHuntersInLocation(int idLocation);
-    std::vector<Monster*> getMonstersInLocation(int idLocation);
-    int getGuildGolds(int idLocation);
+    void updateWorld(World* world);
 
 private :
     sf::Http m_http;

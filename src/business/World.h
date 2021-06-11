@@ -21,17 +21,32 @@ public :
     World();
     void update(sf::Vector2i mousePosition);
 
+    void setLocations(std::vector<AbstractLocation*>&);
+    void setHunters(std::vector<Hunter*>&);
+    void setMonsters(std::vector<Monster*>&);
+    void setStatistics(int time, int nbHunt, int nbDonj, int nbGui);
+
 private :
     virtual void draw(sf::RenderTarget&, sf::RenderStates) const;
 
 private :
     std::vector<AbstractLocation*> m_locations;
+    std::vector<Hunter*> m_hunters;
+    std::vector<Monster*> m_monsters;
+    int m_timeIteration;
+    int m_nbHunters;
+    int m_nbDungeons;
+    int m_nbGuilds;
+    
+    int m_idOfSelectedLocation;
+
     std::size_t m_sizex;
     std::size_t m_sizey;
     table m_table;
 
     float m_updateTime;
     float m_timeSinceLastUpdate;
+    ApiManager m_api;
 };
 
 #endif //WORLD_H
